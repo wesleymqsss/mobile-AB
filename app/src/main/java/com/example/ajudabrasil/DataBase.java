@@ -81,4 +81,18 @@ public class DataBase extends SQLiteOpenHelper {
         cursor.close();
         return user;
     }
+
+    public boolean  updatePassword(int userId, String newPassword){
+        SQLiteDatabase db = this.getWritableDatabase(); // banco para escrita
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PASSWORD, newPassword);
+
+        String selection =  COLUMN_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(userId)};
+
+        int rowsAffected =  db.update(TABLE_USERS, values, selection, selectionArgs);
+        db.close();
+
+        return rowsAffected > 0;
+    }
 }
