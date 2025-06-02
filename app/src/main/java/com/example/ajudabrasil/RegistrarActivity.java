@@ -1,5 +1,6 @@
 package com.example.ajudabrasil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class RegistrarActivity extends AppCompatActivity {
     private EditText editTextUsernameRegister;
     private EditText editTextPasswordRegister;
     private Button buttonRegister;
+    private Button buttonGoToLogin;
     private DataBase database;
 
     @Override
@@ -30,6 +32,15 @@ public class RegistrarActivity extends AppCompatActivity {
         editTextPasswordRegister = findViewById(R.id.editTextPasswordRegister);
         editTextUsernameRegister = findViewById(R.id.editTextUsernameRegister);
         buttonRegister = findViewById(R.id.buttonRegister);
+        buttonGoToLogin = findViewById(R.id.buttonGoToLogin);
+
+        buttonGoToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(RegistrarActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
+            }
+        });
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +65,9 @@ public class RegistrarActivity extends AppCompatActivity {
             Toast.makeText(this, "Usuario cadastrado com sucesso!"+ result, Toast.LENGTH_LONG).show();
             editTextUsernameRegister.setText(" ");
             editTextPasswordRegister.setText(" ");
+
+            Intent loginIntent = new Intent(RegistrarActivity.this, LoginActivity.class);
+            startActivity(loginIntent);
         }else {
          Toast.makeText(this, "Error ao cadastrar usuario.", Toast.LENGTH_LONG).show();
         }
