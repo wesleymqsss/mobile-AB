@@ -38,8 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegistrarActivity.class);
-                startActivity(intent);
+                loginUser();
             }
         });
 
@@ -64,8 +63,15 @@ public class LoginActivity extends AppCompatActivity {
         User user = database.checkUser(username, password);
 
         if (user != null) {
-            Toast.makeText(this, "Login efetuado com sucesso!", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(this, "Login efetuado com sucesso! Bem-vindo, " + user.getUsername(), Toast.LENGTH_LONG).show();
+
+            Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+            homeIntent.putExtra("USER_ID", user.getId());
+            homeIntent.putExtra("USER_NAME", user.getUsername());
+            startActivity(homeIntent);
+
+            //metodo abaixo tem como objetivo fechar atividade de loginActivity
+            finishAffinity();
         } else {
                 Toast.makeText(this, "Login falhou. Verifique suas credenciais.", Toast.LENGTH_SHORT).show();
         }
