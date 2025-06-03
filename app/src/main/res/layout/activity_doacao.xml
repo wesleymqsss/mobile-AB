@@ -1,7 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DoacaoActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_doacao"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewDoarParaOngLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Você está doando para:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewNomeOngDoacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome da ONG"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp"/>
+
+            <EditText
+                android:id="@+id/editTextValorDoacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Valor da Doação (ex: 50.00)"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextDescricaoDoacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descrição (Opcional)"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:gravity="top"
+                android:layout_marginBottom="24dp"/>
+
+            <Button
+                android:id="@+id/buttonConfirmarDoacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirmar Doação"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

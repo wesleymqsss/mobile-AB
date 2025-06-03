@@ -76,6 +76,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentEmpresas = new Intent(HomeActivity.this, ListaDoadoresActivity.class);
+                intentListaOngs.putExtra("USER_ID_DOADOR", currentUserId);
                 startActivity(intentEmpresas);
             }
         });
