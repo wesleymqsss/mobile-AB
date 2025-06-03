@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     private String currentUserName;
     private Button buttonVerMinhasDoacoes;
     private Button buttonVerEmpresas;
+    private Button buttonVerOngs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         textViewWelcomeHome = findViewById(R.id.textViewWelcomeHome);
         buttonVerMinhasDoacoes = findViewById(R.id.buttonVerMinhasDoacoes);
         buttonVerEmpresas = findViewById(R.id.buttonVerEmpresas);
+
 
         // Obter os dados do usuurio da Intent que chamou a home activity
         Intent intent = getIntent();
@@ -59,7 +61,6 @@ public class HomeActivity extends AppCompatActivity {
             textViewWelcomeHome.setText("Bem-vindo!");
         }
 
-        Toast.makeText(this, "Id do usuario: " + currentUserId, Toast.LENGTH_LONG).show();
         buttonVerMinhasDoacoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,10 +75,18 @@ public class HomeActivity extends AppCompatActivity {
         buttonVerEmpresas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(HomeActivity.this, "Botão Empresas Doadoras clicado!", Toast.LENGTH_SHORT).show();
-                // No futuro:
-                // Intent intentEmpresas = new Intent(HomeActivity.this, EmpresasDoadorasActivity.class);
-                // startActivity(intentEmpresas);
+                Intent intentEmpresas = new Intent(HomeActivity.this, ListaDoadoresActivity.class);
+                startActivity(intentEmpresas);
+            }
+        });
+
+        buttonVerOngs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "Botão Ver ONGs clicado!", Toast.LENGTH_SHORT).show();
+                // No futuro, você criará uma ListaONGsActivity e a chamará aqui:
+                // Intent intentOngs = new Intent(HomeActivity.this, ListaONGsActivity.class);
+                // startActivity(intentOngs);
             }
         });
     }

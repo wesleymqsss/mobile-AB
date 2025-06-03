@@ -106,7 +106,7 @@ public class DataBase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = {
-                 COLUMN_USERNAME, COLUMN_TIPO_CADASTRO
+                COLUMN_ID, COLUMN_USERNAME, COLUMN_TIPO_CADASTRO
         };
 
         String selection = COLUMN_TIPO_CADASTRO + " = ?";
@@ -127,7 +127,6 @@ public class DataBase extends SQLiteOpenHelper {
                 User user = new User(
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USERNAME)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPO_CADASTRO))
                 );
                 userList.add(user);

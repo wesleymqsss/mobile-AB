@@ -25,6 +25,13 @@ public class User {
         this.tipoCadastro = tipoCadastro;
     }
 
+    public User(int id, String username, String tipoCadastro) {
+        this.id = id;
+        this.username = username;
+        this.tipoCadastro = tipoCadastro;
+    }
+
+
     public int getId() {
         return id;
     }

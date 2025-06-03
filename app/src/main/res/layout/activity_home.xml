@@ -129,7 +129,47 @@ android:padding="16dp">
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+<com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardOngsCadastradas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ONGs - Realizar Doação"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encontre e conecte-se com as ONGs que fazem parte da nossa plataforma e saiba mais sobre seus projetos e necessidades."
+            android:textSize="14sp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/buttonVerOngs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver ONGs"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
     </ScrollView>
 
-    </LinearLayout>
+</LinearLayout>
