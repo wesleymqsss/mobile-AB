@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListaDoadoresActivity">
+    tools:context=".ListaOngsActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_lista_doadores"
+        android:id="@+id/toolbar_lista_ongs"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -16,17 +16,17 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewDoadores"
+        android:id="@+id/recyclerViewOngs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar_lista_doadores"
+        android:layout_below="@id/toolbar_lista_ongs"
         android:padding="8dp" />
 
     <TextView
         android:id="@+id/textViewListaVazia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nenhum_doador_encontrado"
+        android:text="Nenhuma Ong encontrada."
         android:layout_centerInParent="true"
         android:visibility="gone" />
 

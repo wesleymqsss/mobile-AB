@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         textViewWelcomeHome = findViewById(R.id.textViewWelcomeHome);
         buttonVerMinhasDoacoes = findViewById(R.id.buttonVerMinhasDoacoes);
         buttonVerEmpresas = findViewById(R.id.buttonVerEmpresas);
-
+        buttonVerOngs = findViewById(R.id.buttonVerOngs);
 
         // Obter os dados do usuurio da Intent que chamou a home activity
         Intent intent = getIntent();
@@ -84,9 +84,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(HomeActivity.this, "Botão Ver ONGs clicado!", Toast.LENGTH_SHORT).show();
-                // No futuro, você criará uma ListaONGsActivity e a chamará aqui:
-                // Intent intentOngs = new Intent(HomeActivity.this, ListaONGsActivity.class);
-                // startActivity(intentOngs);
+
+                 Intent intentOngs = new Intent(HomeActivity.this, ListaOngsActivity.class);
+                 startActivity(intentOngs);
             }
         });
     }
