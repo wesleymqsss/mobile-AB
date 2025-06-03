@@ -15,6 +15,15 @@
         android:textSize="24sp"
         android:layout_marginBottom="24dp"/>
 
+    <ImageView
+        android:id="@+id/imageViewLogoLogin"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        android:src="@drawable/login"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="Logo do Aplicativo" />
+
     <EditText
         android:id="@+id/editTextUsernameLogin"
         android:layout_width="match_parent"

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
@@ -17,6 +19,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView textViewWelcomeHome;
     private int currentUserId;
     private String currentUserName;
+    private Button buttonVerMinhasDoacoes;
+    private Button buttonVerEmpresas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,8 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         textViewWelcomeHome = findViewById(R.id.textViewWelcomeHome);
+        buttonVerMinhasDoacoes = findViewById(R.id.buttonVerMinhasDoacoes);
+        buttonVerEmpresas = findViewById(R.id.buttonVerEmpresas);
 
         // Obter os dados do usuurio da Intent que chamou a home activity
         Intent intent = getIntent();
@@ -54,7 +60,26 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this, "Id do usuario: " + currentUserId, Toast.LENGTH_LONG).show();
+        buttonVerMinhasDoacoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "Botão Minhas Doações clicado!", Toast.LENGTH_SHORT).show();
+                // No futuro:
+                // Intent intentMinhasDoacoes = new Intent(HomeActivity.this, MinhasDoacoesActivity.class);
+                // intentMinhasDoacoes.putExtra("USER_ID", currentUserId);
+                // startActivity(intentMinhasDoacoes);
+            }
+        });
 
+        buttonVerEmpresas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "Botão Empresas Doadoras clicado!", Toast.LENGTH_SHORT).show();
+                // No futuro:
+                // Intent intentEmpresas = new Intent(HomeActivity.this, EmpresasDoadorasActivity.class);
+                // startActivity(intentEmpresas);
+            }
+        });
     }
 
     @Override
@@ -69,7 +94,10 @@ public class HomeActivity extends AppCompatActivity {
         int itemId = item.getItemId();
 
         if(itemId == R.id.action_edit_password) {
-            Toast.makeText(this, "Editar Senha", Toast.LENGTH_SHORT).show();
+           Intent editPasswordIntent = new Intent(HomeActivity.this, EditPasswordActivity.class);
+           editPasswordIntent.putExtra("USER_ID", currentUserId);
+           editPasswordIntent.putExtra("USER_NAME", currentUserName);
+           startActivity(editPasswordIntent);
 
             return true;
         }else if (itemId == R.id.action_logout){

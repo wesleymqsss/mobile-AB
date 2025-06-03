@@ -6,19 +6,23 @@ public class User {
 
     private String password;
 
+    private String tipoCadastro;
+
     public User() {
 
     }
 
-    public User(String username, String password){
+    public User(String username, String password, String tipoCadastro){
         this.username = username;
         this.password = password;
+        this.tipoCadastro = tipoCadastro;
     }
 
-    public User(int id, String username, String password){
+    public User(int id, String username, String password, String tipoCadastro){
         this.id = id;
         this.username = username;
         this.password = password;
+        this.tipoCadastro = tipoCadastro;
     }
 
     public int getId() {
@@ -44,4 +48,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getTipoCadastro() {
+        return tipoCadastro;
+    }
+
+    public void setTipoCadastro(String tipoCadastro) {
+        this.tipoCadastro = tipoCadastro;
+    }
+
 }

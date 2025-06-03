@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Ajuda Brasil</string>
+    <string name="minhas_doa_es">Minhas doações</string>
+    <string name="acompanhe_aqui_o_hist_rico_de_todas_as_doa_es_que_voc_realizou_atrav_s_do_nosso_aplicativo_e_veja_o_impacto_da_sua_generosidade">Acompanhe aqui o histórico de todas as doações que você realizou através do nosso aplicativo e veja o impacto da sua generosidade.</string>
+    <string name="empresas_doadoras">Empresas doadoras</string>
+    <string name="descubra_e_conhe_a_as_empresas_parceiras_que_apoiam_nossa_causa_com_suas_valiosas_doa_es_e_contribuem_para_um_futuro_melhor">Descubra e conheça as empresas parceiras que apoiam nossa causa com suas valiosas doações e contribuem para um futuro melhor.</string>
+    <string name="ver_empresas">Ver Empresas</string>
+    <string name="ver_minhas_doa_es">Ver Minhas Doações</string>
+    <string name="bem_vindo_home">Bem-vindo à Home!</string>
 </resources>

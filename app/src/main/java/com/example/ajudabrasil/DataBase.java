@@ -6,19 +6,24 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataBase extends SQLiteOpenHelper {
     private static  final String DATABASE_NAME = "loginDb.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_TIPO_CADASTRO = "tipo_cadastro";
 
     // Cria a tabela de usuários
     private static final String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_USERNAME + " TEXT UNIQUE,"
-            + COLUMN_PASSWORD + " TEXT" + ")";
+            + COLUMN_PASSWORD + " TEXT, "
+            + COLUMN_TIPO_CADASTRO + " TEXT" + ")";
 
     public DataBase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -41,6 +46,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         values.put(COLUMN_USERNAME, user.getUsername());
         values.put(COLUMN_PASSWORD, user.getPassword());
+        values.put(COLUMN_TIPO_CADASTRO, user.getTipoCadastro());
 
         long result = db.insert(TABLE_USERS, null, values);
         db.close();
@@ -51,9 +57,7 @@ public class DataBase extends SQLiteOpenHelper {
     public User checkUser(String username, String password){
         SQLiteDatabase db = this.getReadableDatabase(); // somente leitura no banco
         String[] columns = {
-          COLUMN_ID,
-          COLUMN_USERNAME,
-          COLUMN_PASSWORD
+          COLUMN_ID, COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_TIPO_CADASTRO
         };
 
         String selection = COLUMN_USERNAME + " = ?" + " AND " + COLUMN_PASSWORD + " = ?";
@@ -74,11 +78,12 @@ public class DataBase extends SQLiteOpenHelper {
             user = new User(
                     cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USERNAME)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD))
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPO_CADASTRO))
             );
             cursor.close();
         }
-        cursor.close();
+        db.close();
         return user;
     }
 
@@ -94,5 +99,46 @@ public class DataBase extends SQLiteOpenHelper {
         db.close();
 
         return rowsAffected > 0;
+    }
+
+    public List<User> getUsuariosPorTipo(String tipoCadastro){
+        List<User> userList =  new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {
+                 COLUMN_USERNAME, COLUMN_TIPO_CADASTRO
+        };
+
+        String selection = COLUMN_TIPO_CADASTRO + " = ?";
+        String[] selectionArgs = {tipoCadastro};
+
+        Cursor cursor = db.query(
+                TABLE_USERS,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                COLUMN_USERNAME + " ASC" // odenar por nome em ordem crescente
+        );
+
+        if(cursor != null && cursor.moveToFirst()){
+            do {
+                User user = new User(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USERNAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPO_CADASTRO))
+                );
+                userList.add(user);
+                }while (cursor.moveToNext());
+        }
+
+        if(cursor != null){
+            cursor.close();
+        }
+
+        db.close();
+        return userList;
     }
 }
