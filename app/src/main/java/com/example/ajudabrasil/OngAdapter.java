@@ -16,9 +16,12 @@ public class OngAdapter extends RecyclerView.Adapter<OngAdapter.OngViewHolder> {
     private List<User> ongList;
     private Context context;
 
-    public OngAdapter(List<User> ongList, Context context) {
+    private int userIdDoador;
+
+    public OngAdapter(List<User> ongList, Context context, int userIdDoador) {
         this.ongList = ongList;
         this.context = context;
+        this.userIdDoador = userIdDoador;
     }
 
     @NonNull
