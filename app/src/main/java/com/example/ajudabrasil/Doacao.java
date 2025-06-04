@@ -8,9 +8,6 @@ public class Doacao {
     private String data;
     private String ongNomeRecebedora;
 
-
-
-    // Construtor para novas doações (sem ID ainda)
     public Doacao(int userIdDoador, int ongIdRecebedora, double valor, String data, String ongNomeRecebedora) {
         this.userIdDoador = userIdDoador;
         this.ongIdRecebedora = ongIdRecebedora;
@@ -19,7 +16,6 @@ public class Doacao {
         this.ongNomeRecebedora = ongNomeRecebedora;
     }
 
-    // Construtor completo (ex: ao ler do banco)
     public Doacao(int id, int userIdDoador, int ongIdRecebedora, double valor, String data, String ongNomeRecebedora) {
         this.id = id;
         this.userIdDoador = userIdDoador;

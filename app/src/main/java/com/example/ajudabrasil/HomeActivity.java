@@ -76,7 +76,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentEmpresas = new Intent(HomeActivity.this, ListaDoadoresActivity.class);
-                intentListaOngs.putExtra("USER_ID_DOADOR", currentUserId);
                 startActivity(intentEmpresas);
             }
         });
@@ -84,10 +83,9 @@ public class HomeActivity extends AppCompatActivity {
         buttonVerOngs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(HomeActivity.this, "Botão Ver ONGs clicado!", Toast.LENGTH_SHORT).show();
-
-                 Intent intentOngs = new Intent(HomeActivity.this, ListaOngsActivity.class);
-                 startActivity(intentOngs);
+                Intent intentOngs = new Intent(HomeActivity.this, ListaOngsActivity.class);
+                intentOngs.putExtra("USER_ID_DOADOR", currentUserId);
+                startActivity(intentOngs);
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.example.ajudabrasil;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,11 @@ public class OngAdapter extends RecyclerView.Adapter<OngAdapter.OngViewHolder> {
         holder.buttonRealizarDoacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(context, "Doar para: " + currentUser.getUsername() + " (ID: " + currentUser.getId() + ")", Toast.LENGTH_SHORT).show();
-
+                Intent doacaoIntent = new Intent(context, DoacaoActivity.class);
+                doacaoIntent.putExtra("ONG_ID", currentUser.getId());
+                doacaoIntent.putExtra("ONG_NAME", currentUser.getUsername());
+                doacaoIntent.putExtra("USER_ID_DOADOR", userIdDoador);
+                context.startActivity(doacaoIntent);
             }
         });
     }

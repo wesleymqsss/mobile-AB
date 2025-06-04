@@ -177,4 +177,50 @@ public class DataBase extends SQLiteOpenHelper {
         db.close();
         return userList;
     }
+
+    public List<Doacao> getDoacoesPorUsuario(int usuarioId) {
+        List<Doacao> doacaoList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {
+                COLUMN_DOACAO_ID,
+                COLUMN_DOACAO_USER_ID_FK,
+                COLUMN_DOACAO_ONG_ID_FK,
+                COLUMN_DOACAO_VALOR,
+                COLUMN_DOACAO_ONG_NOME
+        };
+
+        String selection = COLUMN_DOACAO_USER_ID_FK + " = ?";
+        String[] selectionArgs = {String.valueOf(usuarioId)};
+
+        String orderBy = COLUMN_DOACAO_DATA + " DESC";
+
+        Cursor cursor = db.query(
+                TABLE_DOACOES,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                orderBy
+        );
+        if (cursor != null && cursor.moveToFirst()) {
+            do{
+                Doacao doacao = new Doacao(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_DOACAO_ID)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_DOACAO_USER_ID_FK)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_DOACAO_ONG_ID_FK)),
+                        cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_DOACAO_VALOR)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOACAO_DATA)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOACAO_ONG_NOME))
+                );
+                doacaoList.add(doacao);
+            }while (cursor.moveToNext());
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        db.close();
+        return doacaoList;
+    }
 }
