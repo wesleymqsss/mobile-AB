@@ -64,11 +64,9 @@ public class HomeActivity extends AppCompatActivity {
         buttonVerMinhasDoacoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(HomeActivity.this, "Botão Minhas Doações clicado!", Toast.LENGTH_SHORT).show();
-                // No futuro:
-                // Intent intentMinhasDoacoes = new Intent(HomeActivity.this, MinhasDoacoesActivity.class);
-                // intentMinhasDoacoes.putExtra("USER_ID", currentUserId);
-                // startActivity(intentMinhasDoacoes);
+                 Intent intentMinhasDoacoes = new Intent(HomeActivity.this, MinhasDoacoesActivity.class);
+                 intentMinhasDoacoes.putExtra("USER_ID", currentUserId);
+                 startActivity(intentMinhasDoacoes);
             }
         });
 

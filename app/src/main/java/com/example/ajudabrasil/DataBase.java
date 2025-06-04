@@ -187,6 +187,7 @@ public class DataBase extends SQLiteOpenHelper {
                 COLUMN_DOACAO_USER_ID_FK,
                 COLUMN_DOACAO_ONG_ID_FK,
                 COLUMN_DOACAO_VALOR,
+                COLUMN_DOACAO_DATA,
                 COLUMN_DOACAO_ONG_NOME
         };
 
